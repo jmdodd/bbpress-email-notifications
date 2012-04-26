@@ -10,12 +10,20 @@ class UCC_bbPress_Email_Notifications {
 	public static $version;
 	public static $headers;
 	public static $unsubscribe;
+	public static $defaults;
 	
 	public function __construct() {
 		self::$instance = $this;
 		add_action( 'bbp_init', array( $this, 'init' ), 11 );
-		$this->version = '2012042603';
+		$this->version = '2012042605';
 		$this->headers = "MIME-Version: 1.0\r\nContent-Type: text/html; charset=ISO-8859-1\r\n";
+
+		$defaults = array();
+		$defaults['subscriptions'] = apply_filters( 'ucc_ben_default_subscriptions', 'yes' );
+		$defaults['merge'] = apply_filters( 'ucc_ben_default_merge', 'yes' );
+		$defaults['split'] = apply_filters( 'ucc_ben_default_split', 'yes' );
+		$this->defaults = $defaults;
+		
 	}
 
 	public function init() {
@@ -24,9 +32,6 @@ class UCC_bbPress_Email_Notifications {
 			add_action( 'bp_notification_settings', array( $this, 'bp_notification_settings' ), 99 );
 
 			$this->unsubscribe = __( '<br /><br />You can manage your email subscriptions in your Member Profile > Settings > Notifications.', 'bbpress-email-notifications' );
-
-			// Make a better unsubscribe page for BuddyPress users of bbPress.
-			// add_action( 'bp_subscription_settings' );
 		} else { // Otherwise use WordPress user profile.
 			add_action( 'edit_user_profile', array( &$this, 'wp_notification_settings' ) );
 			add_action( 'show_user_profile', array( &$this, 'wp_notification_settings' ) );
@@ -47,13 +52,13 @@ class UCC_bbPress_Email_Notifications {
 		global $bp;
 
 		if ( ! $subscriptions = get_user_meta( $bp->displayed_user->id, 'notification_bbpress_subscriptions', true ) )
-			$subscriptions = 'yes';
+			$subscriptions = $this->defaults['subscriptions'];
 
 		if ( ! $notify_on_merge = get_user_meta( $bp->displayed_user->id, 'notification_bbpress_merge', true ) )
-			$notify_on_merge = 'no';
+			$notify_on_merge = $this->defaults['merge'];
 
 		if ( ! $notify_on_split = get_user_meta( $bp->displayed_user->id, 'notification_bbpress_split', true ) )
-			$notify_on_split = 'no';
+			$notify_on_split = $this->defaults['split'];
 		
 		?>
 
@@ -97,13 +102,13 @@ class UCC_bbPress_Email_Notifications {
 	// Add form to user profile in WordPress.
 	public function wp_notification_settings( $user ) {
 		if ( ! $subscriptions = get_user_meta( $user->ID, 'notification_bbpress_subscriptions', true ) )
-			$subscriptions = 'yes';
+			$subscriptions = $this->defaults['subscriptions'];
 
 		if ( ! $notify_on_merge = get_user_meta( $user->ID, 'notification_bbpress_merge', true ) )
-			$notify_on_merge = 'no';
+			$notify_on_merge = $this->defaults['merge'];
 
 		if ( ! $notify_on_split = get_user_meta( $user->ID, 'notification_bbpress_split', true ) )
-			$notify_on_split = 'no';
+			$notify_on_split = $this->defaults['split'];
 
 		?>
 
@@ -173,7 +178,7 @@ class UCC_bbPress_Email_Notifications {
 		$cleaned_user_ids = array();
 		foreach ( (array) $user_ids as $user_id ) {
 			$notify_me = get_user_meta( $user_id, 'notification_bbpress_subscriptions', true );
-			if ( ( $notify_me == 'yes' ) || ! $notify_me ) 
+			if ( ( $notify_me == 'yes' ) || ( $this->defaults['subscriptions'] == 'yes' ) ) 
 				$cleaned_user_ids[] = $user_id;
 		}
 		return $cleaned_user_ids;
@@ -182,7 +187,8 @@ class UCC_bbPress_Email_Notifications {
 	// Notify topic author when the topic is merged as a reply into an existing thread.
 	public function notify_on_merge( $destination_topic_id, $source_topic_id ) {
 		$author_id = bbp_get_topic_author_id( $source_topic_id );
-		if ( 'yes' == get_user_meta( $author_id, 'notification_bbpress_merge', true ) ) {
+		$notify_me = get_user_meta( $author_id, 'notification_bbpress_merge', true );
+		if ( ( $notify_me == 'yes' ) || ( $this->defaults['merge'] == 'yes' ) ) {
 			$to = bbp_get_topic_author_email( $source_topic_id );
 			$to = apply_filters( 'ucc_ben_notify_on_merge_to', $to, $destination_topic_id, $source_topic_id );
 
@@ -206,7 +212,8 @@ class UCC_bbPress_Email_Notifications {
 	// Notify reply author when the reply is split to a new/existing topic.
 	public function notify_on_split( $from_reply_id, $source_topic_id, $destination_topic_id ) {
 		$author_id = bbp_get_reply_author_id( $from_reply_id );
-		if ( 'yes' ==  get_user_meta( $author_id, 'notification_bbpress_split', true ) ) {
+		$notify_me = get_user_meta( $author_id, 'notification_bbpress_split', true );
+		if ( ( $notify_me == 'yes' ) || ( $this->defaults['split'] == 'yes' ) ) {
 			$to = bbp_get_reply_author_email( $from_reply_id );
 			$to = apply_filters( 'ucc_ben_notify_on_split_to', $to, $from_reply_id, $source_topic_id, $destination_topic_id );
 
@@ -230,4 +237,3 @@ class UCC_bbPress_Email_Notifications {
 
 
 new UCC_bbPress_Email_Notifications;
-
