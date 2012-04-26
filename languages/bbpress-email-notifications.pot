@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the bbPress Email Notifications package.
 msgid ""
 msgstr ""
-"Project-Id-Version: bbPress Email Notifications 0.1.2\n"
+"Project-Id-Version: bbPress Email Notifications 0.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/bbpress-email-notifications\n"
-"POT-Creation-Date: 2012-04-26 17:35:10+00:00\n"
+"POT-Creation-Date: 2012-04-26 21:29:30+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,64 +12,64 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: includes/ucc-ben-loader.php:26
+#: includes/ucc-ben-loader.php:34
 msgid ""
 "<br /><br />You can manage your email subscriptions in your Member Profile > "
 "Settings > Notifications."
 msgstr ""
 
-#: includes/ucc-ben-loader.php:36
+#: includes/ucc-ben-loader.php:41
 msgid ""
 "<br /><br />You can manage your email subscriptions in your User Profile."
 msgstr ""
 
-#: includes/ucc-ben-loader.php:64
+#: includes/ucc-ben-loader.php:69
 msgid "Forums"
 msgstr ""
 
-#: includes/ucc-ben-loader.php:65 includes/ucc-ben-loader.php:117
+#: includes/ucc-ben-loader.php:70 includes/ucc-ben-loader.php:122
 msgid "Yes"
 msgstr ""
 
-#: includes/ucc-ben-loader.php:66 includes/ucc-ben-loader.php:118
+#: includes/ucc-ben-loader.php:71 includes/ucc-ben-loader.php:123
 msgid "No"
 msgstr ""
 
-#: includes/ucc-ben-loader.php:73 includes/ucc-ben-loader.php:125
+#: includes/ucc-ben-loader.php:78 includes/ucc-ben-loader.php:130
 msgid ""
 "A topic you have subscribed to receives a new reply<br /><em>(This overrides "
 "receipt of subscription emails)</em>"
 msgstr ""
 
-#: includes/ucc-ben-loader.php:79 includes/ucc-ben-loader.php:131
+#: includes/ucc-ben-loader.php:84 includes/ucc-ben-loader.php:136
 msgid "A topic that you posted is merged into an existing topic"
 msgstr ""
 
-#: includes/ucc-ben-loader.php:85 includes/ucc-ben-loader.php:137
+#: includes/ucc-ben-loader.php:90 includes/ucc-ben-loader.php:142
 msgid "A reply that you posted is split into a new topic"
 msgstr ""
 
-#: includes/ucc-ben-loader.php:110
+#: includes/ucc-ben-loader.php:115
 msgid "Forum Notifications"
 msgstr ""
 
-#: includes/ucc-ben-loader.php:116
+#: includes/ucc-ben-loader.php:121
 msgid "Notify me via email when:"
 msgstr ""
 
-#: includes/ucc-ben-loader.php:191
+#: includes/ucc-ben-loader.php:197
 msgid "[%1$s] %2$s Merge Notification"
 msgstr ""
 
-#: includes/ucc-ben-loader.php:197
+#: includes/ucc-ben-loader.php:203
 msgid "Your topic %1$s has been merged into topic %2$s."
 msgstr ""
 
-#: includes/ucc-ben-loader.php:215
+#: includes/ucc-ben-loader.php:222
 msgid "[%1$s] %2$s Split Notification"
 msgstr ""
 
-#: includes/ucc-ben-loader.php:221
+#: includes/ucc-ben-loader.php:228
 msgid "Your reply in topic %1$s has been split to topic %2$s."
 msgstr ""
 
