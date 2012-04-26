@@ -2,7 +2,7 @@
 /*
 Plugin Name: bbPress Email Notifications
 Description: Provide notification emails and controls for bbPress subscriptions, merge, and split functions. 
-Version: 0.1.1
+Version: 0.1.2
 Author: Jennifer M. Dodd
 Author URI: http://uncommoncontent.com/
 Text Domain: bbpress-email-notifications

@@ -172,9 +172,9 @@ class UCC_bbPress_Email_Notifications {
 	public function notify_subscriptions( $user_ids ) {
 		$cleaned_user_ids = array();
 		foreach ( (array) $user_ids as $user_id ) {
-			if ( 'yes' == get_user_meta( $user_id, 'notification_bbpress_subscriptions', true ) ) {
+			$notify_me = get_user_meta( $user_id, 'notification_bbpress_subscriptions', true );
+			if ( ( $notify_me == 'yes' ) || ! $notify_me ) 
 				$cleaned_user_ids[] = $user_id;
-			}
 		}
 		return $cleaned_user_ids;
 	}

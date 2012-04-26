@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the bbPress Email Notifications package.
 msgid ""
 msgstr ""
-"Project-Id-Version: bbPress Email Notifications 0.1\n"
+"Project-Id-Version: bbPress Email Notifications 0.1.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/bbpress-email-notifications\n"
 "POT-Creation-Date: 2012-04-26 17:35:10+00:00\n"
 "MIME-Version: 1.0\n"

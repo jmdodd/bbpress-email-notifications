@@ -3,7 +3,7 @@ Contributors: jmdodd
 Tags: bbpress, merge, split, email, notifications
 Requires at least: 3.2.1 
 Tested up to: 3.3.2
-Stable tag: 0.1.1
+Stable tag: 0.1.2
 
 Provide notification emails and controls for bbPress subscriptions, merge, and split functions.
 
@@ -26,6 +26,9 @@ Filters are available for modification of plugin behavior.
 
 == Changelog ==
 
+= 0.1.2 =
+* Fix default subscription behavior.
+
 = 0.1.1 =
 * Add translation files.
 
@@ -33,6 +36,9 @@ Filters are available for modification of plugin behavior.
 * Initial release. 
 
 == Upgrade Notice ==
+
+= 0.1.2 =
+* Fix default subscription behavior.
 
 = 0.1.1 =
 * Add translation files.
