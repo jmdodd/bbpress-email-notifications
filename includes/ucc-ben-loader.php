@@ -14,7 +14,7 @@ class UCC_bbPress_Email_Notifications {
 	public function __construct() {
 		self::$instance = $this;
 		add_action( 'bbp_init', array( $this, 'init' ), 11 );
-		$this->version = '2012042602';
+		$this->version = '2012042603';
 		$this->headers = "MIME-Version: 1.0\r\nContent-Type: text/html; charset=ISO-8859-1\r\n";
 	}
 
